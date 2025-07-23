@@ -1,0 +1,47 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/customer_menu.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Menu
+{% endblock title %}
+    
+{% block content %}
+<h1 class="head">Find your favourites here.....</h1>
+<form action="" method="post" class="search-bar">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Search restaurants or food...">
+    <button class="btn1" type="submit">🔍 Search</button>
+</form>
+<div class="restaurants">
+    {% for restaurant in restaurants %}        
+        <div class="restaurant_card">
+            <div class="logo"><img src="{{restaurant.logo.url}}" alt=""></div>
+            <div class="description">
+                <h1>{{restaurant.restaurant_name}}</h1>                    
+                <p>{{restaurant.description}}</p>
+                <p class="addr">{{restaurant.address}}</p>
+                <a class="btn" href="{% url 'inside_restaurant' id=restaurant.id %}">View Menu</a><br>
+            </div>        
+        </div>
+    {% endfor %}
+</div>    
+
+<div class="foods head">
+    {% for food in fooditems %}
+        <div class="foodcard restaurant_card">
+            <div class="logo"><img src="{{food.image.url}}" alt=""></div>
+            <div class="description">
+                <h3>{{food.name}}</h3>
+                {{food.description}} <br>
+                Rs.{{food.price}} <br>
+                <div class="res-name">{{food.restaurant.restaurant_name}}</div>
+                <a class="btn" href="{% url 'inside_restaurant' id=food.restaurant.id %}">Visit Restaurant</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %} 

@@ -1,0 +1,11 @@
+<div class="navbar">
+    <div class="appname">OFDS</div>
+    <ul>
+        <li class="profile"><img src="{{user.restaurant.logo.url}}" alt="">{{user.restaurant.restaurant_name}}</li>            
+        <li><a href="{% url 'restaurant_dashboard' %}">🏠Dashboard</a></li>
+        <li><a href="{% url 'restaurant_fooditems' %}">🍔Food Items</a></li>
+        <li><a href="{% url 'restaurant_orders' %}">📦Orders</a></li>            
+        <li><a href="{% url 'restaurant_profile' %}">👤Profile</a></li>
+        <li><a href="{% url 'logout' %}">🚪Logout</a></li>            
+    </ul>
+</div>

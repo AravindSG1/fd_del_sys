@@ -1,0 +1,87 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/customer_homepage.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Homepage
+{% endblock title %}
+
+{% block content %}
+<hr>
+<div class="dashboard">
+    <div class="card1">
+        <h2>👋Welcome back, {{user.username}}!</h2>
+        <p class="card-section">🎉Hello username, here's whats happening in your account today</p>
+        <div id="items" class="card-section">
+        <p>🧾<span class="highlight">Last Order:</span></p>
+        <ul>
+            {% for item in last_order.items.all %}
+                <li>{{item.food_item.name}} x {{item.quantity}}</li>
+            {% empty %}
+                <li>No items found.</li>
+            {% endfor %}
+                <li>Total amount: ₹{{last_order.total_amount}}</li>
+        </ul>
+        </div>
+
+        <p class="card-section">📦<span class="highlight">Status:</span> Delivered on {{last_order.updated_at}}</p>
+        <!-- <a href="">📄View Receipt</a> -->
+    </div>
+
+    {% if unpaid_pending %}
+            {% for order in unpaid_pending %}
+        <div class="card2 var">
+            <h2>💰 Waiting for Payment..</h2>
+            
+            <p class="sections"><strong>Order Id:</strong>{{order.id}}</p>
+            <p class="sections"><strong>Restaurant:</strong>{{order.restaurant.restaurant_name}}</p>
+            <div id="items" class="sections">
+                <p><strong>Items:</strong></p>
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>{{item.food_item.name}} x {{item.quantity}}</li>
+                    {% empty %}
+                        <li>No items found.</li>
+                    {% endfor %}
+                        <li>Total amount: ₹{{order.total_amount}}</li>
+                </ul>
+            </div>
+            <div class="btn-set">
+                <a class="btn" href="{% url 'payment_confirmation' %}">Pay</a>
+                <a class="btn del" href="{% url 'delete_order' id=order.id %}">Delete</a>
+            </div>
+            
+            
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    {% for order in orders %}
+        <div class="card2">
+            <h2>🚚 Current order in progress</h2>
+            <p class="sections"><strong>Order Id:</strong>{{order.id}}</p>
+            <p class="sections"><strong>Restaurant:</strong>{{order.restaurant.restaurant_name}}</p>
+            <div id="items" class="sections">
+                <p><strong>Items:</strong></p>
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>{{item.food_item.name}} x {{item.quantity}}</li>
+                    {% empty %}
+                        <li>No items found.</li>
+                    {% endfor %}
+                        <li>Total amount: ₹{{order.total_amount}}</li>
+                </ul>
+            </div>
+
+            <p class="sections"><strong>Assigned Agent:</strong>{{order.delivery_assignment.delivery_agent.username}}
+                    (📞 +91 {{order.delivery_assignment.delivery_agent.deliveryagentprofile.phone}})</p>
+            <p class="sections"><strong>Status:</strong>{{order.status}}</p>
+            <a href="{% url 'cancel_order' id=order.id %}">❌Cancel Order</a>
+        </div>
+    {% endfor %}
+
+</div>
+{%endblock content %}

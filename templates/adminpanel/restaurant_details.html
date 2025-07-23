@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'css/restaurants/navbar.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/restaurants/restaurant_profile.css' %}">
+    <title>Homepage</title>
+</head>
+<body>          
+              <!-- Profile Content -->
+    <div class="profile-container">
+        <h2>🍽️ Restaurant Profile</h2>
+        <img class="logo" src="{{user.restaurant.logo.url}}" alt="">
+
+        <div class="profile-info">        
+            <p><span>🏬 Restaurant Name:</span>{{user.restaurant.restaurant_name}}</p>
+            <p><span>📧 Email:</span>{{user.restaurant.restaurant_email}}</p>
+            <p><span>📱 Phone:</span>{{user.restaurant.phone}}</p>
+            <p><span>🏠 Address:</span>{{user.restaurant.address}}</p>
+            <p><span>📧 Description:</span>{{user.restaurant.description}}</p>
+        </div>
+
+        <!-- <button class="edit-btn">✏️ Edit Profile</button> -->
+         <a href="{% url 'restaurant_edit' id=user.id %}" class="edit-btn">✏️ Edit Profile</a>
+
+    </div>
+    
+</body>
+</html>

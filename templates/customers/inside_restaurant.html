@@ -1,0 +1,82 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/inside_restaurant.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Items
+{% endblock title %}  
+
+{% block content %}
+<div class="head">
+    <h1>{{restaurant.restaurant_name}}</h1>
+    <h2>MENU</h2>
+    <form action="" method="post" class="search-bar">
+        {% csrf_token %}            
+        <input type="text" name="name" placeholder="Search food items...">
+        <button class="btn1" type="submit">🔍 Search</button>
+    </form>
+
+</div>
+
+
+<div class="foods">
+    {% for food in food_items %}
+        <div class="foodcard">
+            <div class="logo"><img src="{{food.image.url}}" alt=""></div>
+            <div class="description">
+                <h2>{{food.name}}</h2>
+                {{food.description}} <br>
+                Rs.{{food.price}} 
+                <form action="{% url 'add_on_cart' id=restaurant.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="qty-control">
+                        <button type="button" class="qty-btn red" onclick="decrement(this)">–</button>
+                        <input type="number" name="quantity" value="0" min="1" class="qty-input" oninput="if(this.value==='') this.value=0;">
+                        <button type="button" class="qty-btn" onclick="increment(this)">+</button>
+                    </div>
+                    <input type="hidden" value="{{food.id}}" name="food_id">
+                    <button type="submit" class="add-cart">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="proceed-cart">
+    <a href="{% url 'customer_cart' %}">Proceed to Cart</a>
+</div>
+
+<script>
+    function increment(button) {
+        const input = button.parentElement.querySelector('.qty-input');
+        input.value = parseInt(input.value) + 1;
+    }
+
+    function decrement(button) {
+        const input = button.parentElement.querySelector('.qty-input');
+        if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+        }
+    }
+</script>
+
+<script>
+// Save scroll position before unload
+window.addEventListener("beforeunload", function () {
+    localStorage.setItem("scrollPosition", window.scrollY);
+});
+</script>
+<script>
+// Restore scroll position after reload
+window.addEventListener("load", function () {
+    const scrollPosition = localStorage.getItem("scrollPosition");
+    if (scrollPosition !== null) {
+        window.scrollTo(0, parseInt(scrollPosition));
+        localStorage.removeItem("scrollPosition");  // Optional: Clear after restoring
+    }
+});
+</script>
+{% endblock content %}

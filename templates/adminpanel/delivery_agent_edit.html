@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/delivery/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/delivery/delivery_agent_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/delivery/delivery_agent_edit_profile.css' %}">
+    <title>Profile</title>
+</head>
+<body>  
+    <div class="profile-container">
+        <h2>✏️ Edit Customer Profile</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="profile-form">
+                <div class="form-section">
+                    <h3>🔐 User Info</h3>
+                    {{ form_user.as_p }}
+                    {{ form_delivery.as_p }}
+                </div>
+
+                <button type="submit" class="edit-btn">💾 Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

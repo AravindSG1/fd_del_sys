@@ -1,0 +1,65 @@
+h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+input[type='radio']{
+    display: none;
+}
+.tab-label {
+    padding: 10px 20px;
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-right: -1px;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+input[type="radio"]:checked + .tab-label {
+    background: #4CAF50;
+    color: white;
+    border-bottom: 2px solid white;
+    font-weight: bold;
+}
+.tab-content {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: -1px;
+}
+#tab1:checked ~ .content #content1,
+#tab2:checked ~ .content #content2 {
+    display: block;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-delete {
+    background-color: red;
+    
+}
+.content {
+    width: 100%;
+}
+
+.btnflex {
+    display: flex;
+}

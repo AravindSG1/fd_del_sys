@@ -1,0 +1,36 @@
+{% extends 'delivery/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/delivery/delivery_agent_dashboard.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Dashboard
+{% endblock title %}
+
+{% block content %}
+<div class="display">
+    <div class="box1">
+        <h1>Today's Assignments</h1>
+        <div class="icon">✅</div>
+        <h1>--------------------{{total_deliveries}}--------------------</h1>
+    </div>
+    <div class="box2">
+        <h1>On the Way</h1>
+        <div class="icon">🚚</div>                
+        <h1>{{out_of_delivery}}</h1>
+    </div>
+    <div class="box3">
+        <h1>Cancelled</h1>
+        <div class="icon">❌</div>
+        <h1>{{cancelled}}</h1>
+    </div>
+    <div class="box4">
+        <h1>Today's Earnings</h1>
+        <div class="icon">💰</div>
+        <h1>₹{{earning}}</h1>
+    </div>
+
+</div>
+{% endblock content %}

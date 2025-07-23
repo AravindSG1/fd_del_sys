@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/customers/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customers/customer_profile.css' %}">
+    <title>Profile</title>
+</head>
+<body>    
+
+      <!-- Profile Content -->
+  <div class="profile-container">
+    <h2>👤 Customer Profile</h2>
+        <img class="profile-pic-large" src="{{user.customerprofile.profile_pic.url}}" alt="">
+
+
+    <div class="profile-info">
+      <p><span>📛 Username:</span>{{user.username}}</p>
+      <p><span>📧 Email:</span>{{user.email}}</p>
+      <p><span>📱 Phone:</span>{{user.customerprofile.phone}}</p>
+      <p><span>🏠 Address:</span>{{user.customerprofile.address}}</p>
+    </div>
+
+    <a href="{% url 'customer_edit' id=user.id %}" class="edit-btn">✏️ Edit Profile</a>
+  </div>
+
+</body>
+</html>

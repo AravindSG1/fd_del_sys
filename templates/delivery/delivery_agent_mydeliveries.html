@@ -1,0 +1,88 @@
+{% extends 'delivery/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/delivery/delivery_agent_mydeliveries.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+My Deliveries
+{% endblock title %}
+
+{% block content %}
+<h1>📦My Deliveries</h1>
+
+<input type="radio" id="tab1" name="tabs" checked>
+<label for="tab1" class="tab-label">🟩 Active Assignments</label>
+
+<input type="radio" id="tab2" name="tabs">
+<label for="tab2" class="tab-label">🟦 Completed Asssignments</label>
+
+<div class="content">
+    <div class="tab-content" id="content1">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th><th>Customer</th><th>Status</th>
+                    <th>Picked from</th><th>Customer_phone</th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for assignment in current_assignments %}
+                <tr>
+                    <td>#{{assignment.order.id}}</td>
+                    <td>{{assignment.order.customer.username}}</td>
+                    <td>{{assignment.status}}</td>
+                    <td>{{assignment.order.restaurant.restaurant_name}}</td>
+                    <td>{{assignment.order.customer.customerprofile.phone}}</td>
+
+                    <td>
+                        {% if assignment.status == 'assigned' or assignment.status == 'picked_up' %}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="assignment_id" value="{{ assignment.id }}">
+                                <input type="hidden" name="status" 
+                                value="{% if assignment.status == 'assigned' %}picked_up{% elif assignment.status == 'picked_up' %}delivered{% endif %}">
+                                <button type="submit" class="btn">
+                                {% if assignment.status == 'assigned' %}
+                                Pick Order
+                                {% elif assignment.status == 'picked_up' %}
+                                Deliver
+                                {% endif %}
+                                </button>
+                                <button type="submit" name="cancel" value="true" class="btn">                                    
+                                    Cancel                                    
+                                </button>
+                            </form>
+                        {% elif assignment.status == 'delivered' or assignment.status == 'cancelled' %}
+                            <span class="btn disabled">Delivered ✔️</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+    </div>
+
+    <div class="tab-content" id="content2">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th><th>Customer</th><th>Status</th><th>Delivered At</th><th>Total ₹</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for assignment in completed_assignments %}
+                <tr>
+                    <td>#{{assignment.order.id}}</td>
+                    <td>{{assignment.order.customer.username}}</td>
+                    <td>{{assignment.status}}</td>
+                    <td>{{assignment.order.updated_at}}</td>
+                    <td>{{assignment.order.total_amount}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,11 @@
+<div class="navbar">
+    <div class="appname">OFDS</div>
+    <ul>
+        <li><a href="{% url 'customer_homepage' %}">🏠Home</a></li>
+        <li><a href="{% url 'customer_menu' %}">🍽️Menu</a></li>
+        <li><a href="{% url 'customer_orders' %}">📦Orders</a></li>
+        <li><a href="{% url 'customer_cart' %}">🛒Cart</a></li>
+        <li><a class="profile" href="{% url 'customer_profile' %}"><img src="{{user.customerprofile.profile_pic.url}}" alt="">Profile</a></li>
+        <li><a href="{% url 'logout' %}">🚪Logout</a></li>            
+    </ul>
+</div>

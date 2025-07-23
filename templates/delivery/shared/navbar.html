@@ -1,0 +1,10 @@
+<div class="navbar">
+    <div class="appname">OFDS</div>
+    <ul>
+        <li class="profile"><img src="{{user.deliveryagentprofile.profile_pic.url}}" alt="">{{user.username}}</li>            
+        <li><a href="{% url 'delivery_agent_dashboard' %}">🏠Dashboard</a></li>
+        <li><a href="{% url 'delivery_agent_mydeliveries' %}">📦My Deliveries</a></li>                        
+        <li><a href="{% url 'delivery_agent_profile' %}">👤Profile</a></li>
+        <li><a href="{% url 'logout' %}">🚪Logout</a></li>            
+    </ul>
+</div>

@@ -1,0 +1,85 @@
+{% extends 'restaurants/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/restaurants/restaurant_orders.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Orders
+{% endblock title %} 
+
+{% block content %}
+<h1>📦All Orders</h1>
+
+<input type="radio" id="tab1" name="tabs" checked>
+<label for="tab1" class="tab-label">🟩 Active Orders</label>
+
+<input type="radio" id="tab2" name="tabs">
+<label for="tab2" class="tab-label">🟦 Completed Orders</label>
+
+<div class="content">
+    <div class="tab-content" id="content1">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th><th>Customer</th><th>Placed at</th>
+                    <th>Status</th><th>Total ₹</th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in active_orders %}
+                <tr>
+                    <td>#{{order.id}}</td>
+                    <td>{{order.customer.username}} </td>
+                    <td>{{order.placed_at}}</td>
+                    <td>{{order.status}}</td>
+                    <td>₹{{order.total_amount}}</td>
+                    <td>
+                        {% if order.status == 'pending' or order.status == 'preparing' %}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="order_id" value="{{ order.id }}">
+                                <input type="hidden" name="status" value="{% if order.status == 'pending' %}preparing{% elif order.status == 'preparing' %}ready{% endif %}">
+                                <button type="submit" class="btn">
+                                {% if order.status == 'pending' %}
+                                Start Prep
+                                {% elif order.status == 'preparing' %}
+                                Set Ready
+                                {% endif %}
+                                </button>
+                            </form>
+                        {% elif order.status == 'ready' %}
+                            <span class="btn disabled">Ready ✔️</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+    </div>
+
+    <div class="tab-content" id="content2">
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th><th>Customer</th><th>Placed at</th>
+                    <th>Status</th><th>Total ₹</th><th>Delivered At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in completed_orders %}
+                <tr>
+                    <td>#{{order.id}}</td>
+                    <td>{{order.customer.username}} </td>
+                    <td>{{order.placed_at}}</td>
+                    <td>{{order.status}}</td>
+                    <td>₹{{order.total_amount}}</td>
+                    <td>{{order.updated_at}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

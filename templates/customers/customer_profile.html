@@ -1,0 +1,27 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/customer_profile.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Profile
+{% endblock title %}  
+
+{% block content %}
+  <div class="profile-container">
+    <h2>👤 My Profile</h2>
+        <img class="profile-pic-large" src="{{user.customerprofile.profile_pic.url}}" alt="">
+
+
+    <div class="profile-info">
+      <p><span>📛 Username:</span>{{user.username}}</p>
+      <p><span>📧 Email:</span>{{user.email}}</p>
+      <p><span>📱 Phone:</span>{{user.customerprofile.phone}}</p>
+      <p><span>🏠 Address:</span>{{user.customerprofile.address}}</p>
+    </div>
+
+    <a href="{% url 'customer_edit_profile' %}" class="edit-btn">✏️ Edit Profile</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+.head{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 10px rgba(180, 23, 23, 0.1);
+}
+.head h1{
+    background-color: #f4511e;
+    border-radius: 10px;
+}
+.foods{
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.foodcard{
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    margin-left: 15%;
+    margin-right: 15%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.foodcard img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 0 0 20px; /* match left corners if image is on the left */
+    /* object-fit: cover; */
+}
+.foodcard .logo{
+    width: 20%;
+}
+.foodcard .description{
+    width: 80%;
+    text-align: center;
+}
+/* ------------------------------------------------------- */
+
+.add-food-button:hover {
+  background-color: #f4511e; /* darker orange on hover */
+  cursor: pointer;
+}
+
+.btn {
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    border-radius: 7px;
+    padding: 1%;
+    margin-top: 40%;
+}
+.red{
+    background-color: red;
+}
+.price {
+    margin-bottom: 1%;
+}

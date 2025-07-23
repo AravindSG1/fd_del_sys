@@ -1,0 +1,49 @@
+{% extends 'adminpanel/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/adminpanel/admin_manage_users.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Adminpanel
+{% endblock title %}
+    
+{% block content %}    
+<div class="tab-content" id="content1">
+    <h1>Delivery Agents</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Agent ID</th><th>Name</th><th>Email</th>
+                <th>Phone</th><th>Address</th><th>Action</th>                        
+            </tr>
+        </thead>
+        <tbody>
+            {% for agent in agents %}
+            <tr>
+                <td>#{{agent.id}}</td>
+                <td>{{agent.agent.username}} </td>
+                <td>{{agent.agent.email}}</td>
+                <td>{{agent.phone}}</td>
+                <td>{{agent.address}}</td>                        
+                <td>
+                    <div class="btnflex">
+                        <a class="btn" href="{% url 'delivery_agent_details' id=agent.id %}">View Details</a>
+                        <a class="btn btn-delete" href="{% url 'delete_delivery_agents' id=agent.id %}"
+                        onclick="return confirmDelete()">Delete</a>
+                    </div>
+                    
+                </td>
+                        
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>        
+</div>
+<script>
+function confirmDelete() {
+    return confirm("Are you sure you want to Delete?");
+}
+</script>
+{% endblock content %}

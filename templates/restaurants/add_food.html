@@ -1,0 +1,21 @@
+{% extends 'restaurants/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/restaurants/add_food.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Add Food
+{% endblock title %} 
+
+{% block content %}
+<div class="form-container">
+    <h1>🍽️ Add Food Item</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ food }}
+        <input type="submit" value="Add Food">
+    </form>
+</div>
+{% endblock content %}

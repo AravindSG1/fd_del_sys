@@ -1,0 +1,87 @@
+{% extends 'adminpanel/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/adminpanel/admin_restaurants.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Restaurants
+{% endblock title %}
+
+{% block content %}
+<div class="content">
+    <h1>📦All Restaurants</h1>
+    <input type="radio" id="tab1" name="tabs" checked>
+    <label for="tab1" class="tab-label">🟩 Approved Restaurants</label>
+
+    <input type="radio" id="tab2" name="tabs">
+    <label for="tab2" class="tab-label">🟦 Waiting for Approval</label>
+
+    <div class="content">
+        <div class="tab-content" id="content1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Restaurant ID</th><th>Name</th><th>Owner</th>
+                        <th>Address</th><th>Phone</th><th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for restaurant in approved_restaurants %}
+                    <tr>
+                        <td>#{{restaurant.id}}</td>
+                        <td>{{restaurant.restaurant_name}} </td>
+                        <td>{{restaurant.owner}}</td>
+                        <td>{{restaurant.address}}</td>
+                        <td>{{restaurant.phone}}</td>
+                        <td>{{restaurant.restaurant_email}}</td>
+                        <td>
+                            <div class="btnflex">
+                                <a class="btn" href="{% url 'restaurant_details' id=restaurant.id %}">View Details</a>
+                                <a class="btn btn-delete" href="{% url 'delete_restaurant' id=restaurant.id %}"
+                                onclick="return confirmDelete()">Delete</a>
+                            </div>
+                            
+                        </td>
+                                
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>        
+        </div>
+
+        <div class="tab-content" id="content2">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Restaurant ID</th><th>Name</th><th>Owner</th>
+                        <th>Address</th><th>Phone</th><th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for restaurant in on_hold_res %}
+                    <tr>
+                        <td>#{{restaurant.id}}</td>
+                        <td>{{restaurant.restaurant_name}} </td>
+                        <td>{{restaurant.owner}}</td>
+                        <td>{{restaurant.address}}</td>
+                        <td>{{restaurant.phone}}</td>
+                        <td>{{restaurant.restaurant_email}}</td>
+                        <td><a class="btn" href="{% url 'restaurant_approval' id=restaurant.id %}">Approve</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to Delete?");
+    }
+</script>
+{% endblock content %}
+

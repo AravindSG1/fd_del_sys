@@ -1,0 +1,35 @@
+{% extends 'restaurants/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/restaurants/restaurant_fooditems.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Items
+{% endblock title %} 
+
+{% block content %}
+<div><a href="{% url 'add_food' %}" class="head"><h1>➕Add New Food Item</h1></a></div>
+<div class="foods">
+    {% for food in fooditems %}
+        <div class="foodcard">
+            <div class="logo"><img src="{{food.image.url}}" alt=""></div>
+            <div class="description">
+                <h1>{{food.name}}</h1>
+                {{food.description}} <br>
+                <div class="price">Rs.{{food.price}}</div>  <br>
+                <a class="btn" href="{% url 'edit_food' id=food.id %}">Edit</a> 
+                <a class="btn red" href="{% url 'delete_food' id=food.id %}"
+                onclick="return confirmDelete()">Delete</a>                
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to Delete?");
+    }
+</script>
+{% endblock content %}

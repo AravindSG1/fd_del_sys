@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/adminpanel/sidebar.css' %}">
+    
+    {% block extra_styles %}
+    
+    {% endblock extra_styles %}
+
+    <title>{% block title %} {% endblock title %}</title>
+</head>
+<body>
+    <section class="top">
+        <h1 class="top1">👨‍🍳OFDS</h1>
+        <h1 class="head">Admin Panel</h1>
+        <h1>{{user}}</h1>
+    </section>    
+    <div class="maincontainer">
+        <div class="sidebar">
+            {% include 'adminpanel/shared/sidebar.html' %}     
+        </div>
+        {% block content %}
+
+        {% endblock content %}
+        
+    </div>
+    
+</body>
+</html>
+

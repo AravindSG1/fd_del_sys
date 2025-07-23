@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="{% static 'css/delivery/delivery_agent_profile.css' %}">
+    <title>Profile</title>
+</head>
+<body> 
+          <!-- Profile Content -->
+    <div class="profile-container">
+    <h2>👤 My Profile</h2>
+        <img class="profile-pic-large" src="{{agent.profile_pic.url}}" alt="">
+
+
+    <div class="profile-info">
+      <p><span>🛵 Role:</span>Delivery Agent</p>
+      <p><span>📛 Username:</span>{{agent.agent.username}}</p>
+      <p><span>📧 Email:</span>{{agent.agent.email}}</p>
+      <p><span>📱 Phone:</span>{{agent.phone}}</p>
+      <p><span>🏠 Address:</span>{{agent.address}}</p>
+    </div>
+
+    <a href="{% url 'delivery_agent_edit' id=agent.id %}" class="edit-btn">✏️ Edit Profile</a>
+  </div>
+
+</body>
+</html>

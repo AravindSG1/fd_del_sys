@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/customers/payment_success.css' %}">
+    <title>Payment Success</title>
+</head>
+<body>
+    <!-- <h2>Payment Successful </h2>
+    
+    amount: {{txn.amount}}
+    status : {{txn.status}}
+    payment method: {{txn.method}}
+    <p>Transaction ID: {{ txn.txn_id }}</p>
+    <p>Order ID: {{ order.id }}</p>
+    time: {{txn.paid_at}}
+    <a href="{% url 'customer_homepage' %}">Go to Homepage</a> -->
+
+    <div class="success-container">
+        <div class="emoji">🎉</div>
+        <h2>Payment Successful</h2>
+
+        <div class="info">
+            <p><span>Amount:</span> ₹{{ txn.amount }}</p>
+            <p><span>Status:</span> {{ txn.status }}</p>
+            <p><span>Payment Method:</span> {{ txn.method }}</p>
+            <p><span>Transaction ID:</span> {{ txn.txn_id }}</p>
+            <p><span>Order ID:</span> {{ order.id }}</p>
+            <p><span>Time:</span> {{ txn.paid_at }}</p>
+        </div>
+
+        <a href="{% url 'customer_homepage' %}">Go to Homepage</a>
+    </div>
+
+</body>
+</html>

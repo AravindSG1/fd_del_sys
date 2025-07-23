@@ -1,0 +1,14 @@
+<div class="navbar">
+    <div class="name">👨‍🍳OFDS</div>
+    <ul  class="nav-menu">   
+        <li><a href="{% url 'homepage' %}">Home</a></li>         
+        <li class="dropdown">Registration
+            <ul class="submenu">
+                <li><a href="{% url 'restaurant_form' %}">Restaurant</a></li>
+                <li><a href="{% url 'delivery_agent_form' %}">Delivery Agent</a></li>
+            </ul>
+        </li>
+        <li><a href="{% url 'login_page' %}">Login</a></li>
+        <li><a href="{% url 'customer_form' %}">Sign up</a></li>
+    </ul>
+</div>   

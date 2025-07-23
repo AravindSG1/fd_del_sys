@@ -1,0 +1,61 @@
+.display{
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+    justify-content: space-around;
+    gap: 35px;
+    margin-top: 3%;
+    margin-right: 5%;
+}
+.display .box1{
+    color: white;
+    /* background-color: rgb(111, 201, 111); */
+    /* background: #833AB4; */
+    background: linear-gradient(355deg, rgba(131, 58, 180, 1) 2%, rgba(253, 29, 29, 1) 62%, rgba(252, 176, 69, 1) 100%);
+    border-radius: 20px;
+    text-align: center;       
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.display .box2{
+    color: white;
+    background-color: rgb(216, 216, 105);
+    border-radius: 20px;
+    text-align: center;  
+      
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: linear-gradient(green,red,blue);
+}
+.display .box3{
+    color: white;
+    background: radial-gradient(circle,rgba(181, 5, 82, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    border-radius: 20px;
+    text-align: center;    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.display .box4{
+    color: white;
+    background: linear-gradient(90deg,rgba(115, 180, 58, 0.36) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    border-radius: 20px;
+    text-align: center;   
+     
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.display .box5{
+    color: white;
+    background: radial-gradient(circle,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    border-radius: 20px;
+    text-align: center;
+        
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10%;    
+}

@@ -1,0 +1,58 @@
+body{
+    background-color: rgb(206, 198, 198);
+}
+.head{
+    text-align: center;
+}
+.orders{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.order-card{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+    gap: 10px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.order-header{
+    display: flex;
+    gap: 100px;
+    font-size: 20px;
+}
+.order-restaurant {
+    color: #888;
+    font-size: 20px;
+}
+
+.order-items {
+    margin: 15px 0;
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+.order-info {
+    font-size: 17px;
+    color: #555;
+}
+
+.order-status {
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 17px;
+}
+a {
+    text-decoration: none;
+    margin-right: 15px;
+    color: #ff7043;
+    font-weight: 500;
+}
+

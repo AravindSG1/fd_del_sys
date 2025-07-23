@@ -1,0 +1,65 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/payment_confirmation.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Select Payment
+{% endblock title %}  
+       
+{% block content %}
+<div class="payment-container">
+    <h1>💳 Payment</h1>
+    <div class="order-id">Order ID: {{ order.id }}</div>
+
+    {% for item in items %}
+        <div class="order-item">
+            <span>{{ item.food_item.name }} (x{{ item.quantity }})</span>
+            <span>₹{{ item.food_item.price }}</span>
+        </div>
+    {% endfor %}
+
+    <div class="total">
+        Total: ₹{{ total }}
+    </div>
+
+    <form action="{% url 'payment_confirmation' %}" method="post">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form }}
+        </div>
+        <input type="submit" name="action" value="delete" formnovalidate>
+        <input type="submit" name="action" value="success">
+        <input type="submit" name="action" value="failure">
+    </form>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+    
+    
+</body>
+</html>

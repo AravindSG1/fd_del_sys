@@ -1,0 +1,31 @@
+{% extends 'core/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/core/login.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Login
+{% endblock title %}
+
+{% block content %}
+
+<div class="main"> 
+<div class="fullcontainer">
+    <h1>👨‍🍳OFDS</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <strong style="color: red">{{ message }}</strong>
+        {% endfor %}
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input class="username-field" type="text" name="username" placeholder="username"><br>  <!-- username:  -->
+        <input class="password-field" type="password" name="password" placeholder="password"><br> <!-- password: -->
+        <button type="submit" id="signin">Sign In</button>
+    </form>
+</div>
+</div>
+
+{% endblock content %}

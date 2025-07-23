@@ -1,0 +1,35 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/order_confirmation.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Confirm Order
+{% endblock title %}  
+
+{% block content %}
+<div class="order-container">
+<h1>🛒 Your Order</h1>
+
+{% for item in items %}
+    <div class="order-item">
+        <span>{{ item.food_item.name }} (x{{ item.quantity }})</span>
+        <span>₹{{ item.food_item.price }}</span>
+    </div>
+{% endfor %}
+
+<div class="total">
+    Total: ₹{{ total }}
+</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="form-fields">
+        {{ form }}
+    </div>
+    <button type="submit">Confirm Order</button>
+</form>
+</div>
+{% endblock content %}

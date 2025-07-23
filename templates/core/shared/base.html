@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/core/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/core/index.css' %}">
+
+    {% block extra_styles %}
+    
+    {% endblock extra_styles %}
+    
+    <title>{% block title %}  {% endblock title %}</title>
+</head>
+<body>
+    {% include 'core/shared/navbar.html' %}
+
+    {% block content %}
+
+    {% endblock content %}   
+    
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>🍴 OFDS</h3>
+      <p>Delivering your favorite meals fast and fresh!</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>📖 Learn More</h4>
+      <ul>
+        <!-- <li><a href="#">🏠 Home</a></li> -->
+        <!-- <li><a href="#">🍔 Browse Restaurants</a></li>
+        <li><a href="#">🚚 Track Order</a></li> -->
+        <li><a href="#">👨‍🍳 About Us</a></li>
+        <li><a href="#">📃 Terms & Privacy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>📞 Contact Us</h4>
+      <p>📍 123 Food Street, Flavor Town</p>
+      <p>📞 +1-800-FOOD-123</p>
+      <p>📧 support@ofds.invalid</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>🌐 Follow Us</h4>
+      <p>
+        👍 <a href="#">Facebook</a><br>
+        🐦 <a href="#">Twitter</a><br>
+        📸 <a href="#">Instagram</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p><strong>Project by:</strong>Aravind S.G.</p>
+    <p>Internship project – submitted to <a href="https://www.onacademia.com/">Onacademia</a> </p>
+    <p>Copyright © 2025 OFDS. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

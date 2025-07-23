@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/core/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customers/customer_form.css' %}">
+    <title>Homepage</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="name">👨‍🍳OFDS</div>
+        <ul  class="nav-menu">          
+            <li><a href="{% url 'homepage' %}">Home</a></li>  
+            <li class="dropdown">Registration
+                <ul class="submenu">
+                    <li><a href="{% url 'restaurant_form' %}">Restaurant</a></li>
+                    <li><a href="{% url 'delivery_agent_form' %}">Delivery Agent</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'login_page' %}">Login</a></li>
+            <li><a href="{% url 'customer_form' %}">Sign up</a></li>
+        </ul>
+    </div>
+
+    <section>
+        <h1>Delivery Agent Form</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-box">
+                {{user.username.label_tag}}
+                {{user.username}}
+            </div>
+            <div class="input-box">
+                {{user.email.label_tag}} 
+                {{user.email}}
+            </div>
+            <div class="input-box">
+                {{user.password.label_tag}} 
+                {{user.password}}
+            </div>
+            <div class="input-box">
+                {{delivery.phone.label_tag}} 
+                {{delivery.phone}}
+            </div>
+            <div class="input-box">
+                {{delivery.address.label_tag}} 
+                {{delivery.address}}
+            </div>
+            <div class="input-box">
+                {{delivery.profile_pic.label_tag}} 
+                {{delivery.profile_pic}}
+            </div>
+            <input type="submit">
+        </form>
+
+    </section>
+
+</body>
+</html>
+

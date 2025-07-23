@@ -1,0 +1,42 @@
+{% extends 'adminpanel/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/adminpanel/admin_dashboard.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Adminpanel
+{% endblock title %}
+
+{% block content %}
+<div class="display">
+    <div class="box1">
+        <h1>Total Users</h1>
+        <h1>👥</h1>
+        <h1>--------------------{{total_users}}--------------------</h1>
+    </div>
+    <div class="box2">
+        <h1>Restaurants</h1>
+        <h1>🍽️</h1>
+        <h1>{{total_restaurants}}</h1>
+    </div>
+    <div class="box3">
+        <h1>Total Orders</h1>
+        <h1>📦</h1>
+        <h1>{{total_orders}}</h1>
+    </div>            
+    <div class="box4">
+        <h1>Delivery Agents</h1>
+        <h1>🛵</h1>
+        <h1>{{total_agents}}</h1>
+    </div>
+    <div class="box5">
+        <h1>Payments Processed</h1>
+        <h1>💰</h1>
+        <h1>{{total_money}}</h1>
+    </div>
+</div>
+{% endblock content %}
+ 
+

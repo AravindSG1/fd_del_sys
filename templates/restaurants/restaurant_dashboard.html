@@ -1,0 +1,54 @@
+{% extends 'restaurants/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/restaurants/restaurant_dashboard.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Dashboard
+{% endblock title %}  
+
+{% block content %}
+<h1>Restaurant</h1>    
+
+
+<div class="display">
+    <div class="box1">
+        <h1>Total Orders</h1>
+        <div class="icon">📦</div>
+        <h1>--------------------{{total_order_nos}}--------------------</h1>
+    </div>
+    <div class="box2">
+        <h1>Preparing</h1>
+        <div class="icon">🥣</div>                
+        <h1>{{preparing}}</h1>
+    </div>
+    <div class="box3">
+        <h1>Delivered</h1>
+        <div class="icon">🚚</div>
+        <h1>{{delivered}}</h1>
+    </div>
+    <div class="box4">
+        <h1>Cancelled</h1>
+        <div class="icon">❌</div>
+        <h1>{{cancelled}}</h1>
+    </div>
+    <div class="box5">
+        <h1>Avg. Daily Revenue:</h1>
+        <div class="icon">💰</div>
+        <h1>₹{{total}}</h1>
+    </div>
+</div>
+
+
+<!-- <div class="foods">    
+    <h1 class="heading">🔥 Popular Items Today:</h1>
+        <div class="foodcard">                
+            <div class="logo"><img src="/media/restaurants/food_images/beefroast.jpg" alt=""></div>
+            <div class="description">
+                Biryani (30 📦Orders)                                         
+            </div>
+        </div>        
+</div> -->
+{% endblock content %}

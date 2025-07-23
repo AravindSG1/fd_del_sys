@@ -1,0 +1,46 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/customer_profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/customers/customer_edit_profile.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Edit Profile
+{% endblock title %}  
+
+{% block content %}
+<div class="profile-container">
+    <h2>✏️ Edit Customer Profile</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="profile-form">
+            <div class="form-section">
+                <h3>🔐 User Info</h3>
+                {{ form_user.as_p }}                
+                {{ form_customer.as_p }}
+            </div>
+            <!-- ✅ Toggle Button -->
+        <div class="form-section">
+            <button type="button" onclick="togglePasswordSection()">🔑 Change Password</button>
+        </div>
+
+        <!-- ✅ Password Fields (Initially Hidden) -->
+        <div id="password-section" style="display: none;">
+            <h3>Change Password</h3>
+            {{ form_password.as_p }}
+            <p style="color: gray;">Leave blank if you don't want to change your password.</p>
+        </div>
+            <button type="submit" class="edit-btn">💾 Save Changes</button>
+        </div>
+    </form>
+</div>
+<script>
+function togglePasswordSection() {
+    const section = document.getElementById('password-section');
+    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+{% endblock content %}

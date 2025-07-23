@@ -1,0 +1,40 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/customer_cart.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Cart
+{% endblock title %}
+
+{% block content %}
+<h1>🛒 My Cart</h1>
+<div class="cart-container">
+    {% if restaurant %}
+    <h2>{{restaurant.restaurant_name}}</h2>
+    {% else %}
+    <h3>Add some food</h3>
+    {% endif %}
+    {% for item in items %}
+    <div class="cart-item">
+        <span>{{ item.food_item.name }}</span>
+        <span>{{ item.quantity }} &nbsp; x &nbsp; ₹{{item.food_item.price}}</span>
+        <span>₹{{ item.subtotal }}</span>
+        <form action="{% url 'delete_cart_item' item.id %}" method="post" style="margin: 0;">
+            {% csrf_token %}
+            <button class="delete-button" type="submit">Delete</button>
+        </form>
+    </div>
+    {% endfor %}
+
+    <div class="total">
+        Total: ₹{{ total }}
+    </div>
+
+    <div class="place-order">
+        <a href="{% url 'order_confirmation' %}">Place Order</a>
+    </div>
+</div>
+{% endblock content %}

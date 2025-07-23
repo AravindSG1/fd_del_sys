@@ -1,0 +1,37 @@
+{% extends 'customers/shared/base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/customers/customer_orders.css' %}">
+{% endblock extra_styles %}
+
+{% block title %} 
+Orders
+{% endblock title %}
+
+{% block content %}
+<h1 class="head">My Orders</h1>
+<div class="orders">
+    {% for order in orders %}
+    <div class="order-card">
+        <div class="order-header">
+            <div>📦 Order #{{order.id}}</div>
+            <div class="order-restaurant">🏪 {{order.restaurant.restaurant_name}}</div>
+        </div>
+        <div class="order-items">
+            🧆 Items:
+            <ul>
+                {% for item in order.items.all %}
+                    <li>{{item.food_item.name}} x {{item.quantity}}</li>
+                {% empty %}
+                    <li>No items found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="order-info">💰 Total: ₹{{order.total_amount}} &nbsp;&nbsp;&nbsp;&nbsp; 📅 Delivered: {{order.updated_at}}</div>
+        <div class="order-status">🚚 Status: {{order.status}}</div>
+        <!-- <a href="">📄 View Details</a> -->
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

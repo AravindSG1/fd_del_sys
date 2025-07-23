@@ -1,0 +1,27 @@
+ <ul>
+    <li><a href="{% url 'admin_dashboard' %}">
+        <div class="{% if request.resolver_match.url_name == 'admin_dashboard' %}activelink{% else %}sidetext{% endif %}">
+            🏠&nbsp;Dashboard</div></a></li>
+
+    <li><a href="{% url 'admin_manage_users' %}">
+        <div class="{% if request.resolver_match.url_name == 'admin_manage_users' %}activelink{% else %}sidetext{% endif %}">
+            🧑‍🤝‍🧑&nbsp;Manage Users</div></a></li>
+
+    <li><a href="{% url 'admin_restaurants' %}">
+        <div class="{% if request.resolver_match.url_name == 'admin_restaurants' %}activelink{% else %}sidetext{% endif %}">
+            🍽️&nbsp;Restaurants</div></a></li>
+
+    <li><a href="{% url 'admin_orders' %}">
+        <div class="{% if request.resolver_match.url_name == 'admin_orders' %}activelink{% else %}sidetext{% endif %}">
+            📦&nbsp;Orders</div></a></li>
+
+    <li><a href="{% url 'admin_payments' %}">
+        <div class="{% if request.resolver_match.url_name == 'admin_payments' %}activelink{% else %}sidetext{% endif %}">
+            💰&nbsp;Payments</div></a></li>
+
+    <li><a href="{% url 'admin_delivery_agents' %}">
+        <div class="{% if request.resolver_match.url_name == 'admin_delivery_agents' %}activelink{% else %}sidetext{% endif %}">
+            🚴&nbsp;Delivery Agents</div></a></li> 
+
+    <li><a href="{% url 'logout' %}"><div class="sidetext">🚪&nbsp;Logout</div></a></li>
+</ul>

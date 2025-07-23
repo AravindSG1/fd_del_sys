@@ -1,0 +1,81 @@
+.dashboard{
+    background-color: #f6f8fa;
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+    justify-content: space-around;
+    gap: 50px;
+    margin-top: 2%;
+}
+.card1{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 4%;
+}
+.card1 h2{
+    color: orange;
+    margin-bottom: 15px;
+}
+.card1 .highlight{
+    font-weight: bolder;
+}
+.card1 .card-section{
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.card1 a{
+    text-decoration: none;
+    color: orange;
+    font-size: 20px;
+}
+.card1 ul{
+    list-style: none;
+    font-size: 20px;
+}
+.card1 #items{
+    display: flex;
+}
+
+.card2{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 4%;
+}
+.card2 h2{
+    color: orange;
+    margin-bottom: 15px;
+}
+.card2 strong{
+    color: orange;
+}
+.card2 .sections{
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.card2 a{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+}
+.card2 ul{
+    list-style: none;
+    font-size: 20px;
+}
+.card2 #items{
+    display: flex;
+}
+
+.var .btn {
+    background-color: blue;
+    color: white;
+    padding: 1%;
+    border-radius: 6px;
+}
+.var .del {
+    background-color: red;
+}
+.btn-set {
+    display: flex;
+    gap: 100px;
+}
